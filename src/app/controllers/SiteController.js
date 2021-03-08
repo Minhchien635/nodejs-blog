@@ -1,16 +1,38 @@
-class SiteController{
+const Course = require('../models/Course');
+const {mutipleMongooseToObject} = require('../../util/mongoose');
 
-    index(req, res){
+class SiteController {
+     // [GET] / 
+     index(req, res, next) {
 
-        // [GET] /
-        res.render('home');
+        //callback
+      /*Course.find({},function(err, courses){
+          if(!err) {
+              res.json(courses);
+          }else {
+              next(err);
+          }
+      });*/
+
+        //promise
+      Course.find({})
+        .then(courses => {
+            //courses = courses.map(course => course.toObject())
+            res.render('home',{
+            //courses: courses
+              courses: mutipleMongooseToObject(courses)
+            });
+         })
+        //.then(courses => res.json(courses))
+        .catch(next);
+
+        //res.render('home');
     }
 
     // [GET] /search
-    search(req, res){
+    search(req, res) {
         res.render('search');
     }
 }
 
-
-module.exports = new SiteController;
+module.exports = new SiteController();
