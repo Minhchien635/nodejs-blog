@@ -4,7 +4,6 @@ const router = express.Router();
 const courseController = require('../app/controllers/CourseController');
 
 //newController.index
-
 router.get('/create', courseController.create);
 router.post('/store', courseController.store);
 router.get('/:id/edit', courseController.edit);

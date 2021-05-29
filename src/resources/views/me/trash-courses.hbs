@@ -25,7 +25,7 @@
             <tr>
                 <th scope="col" colspan="2">#</th>
                 <th scope="col">Tên khóa học</th>
-                <th scope="col">Trình độ</th>
+                <th class="d-flex"scope="col">Trình độ</th>
                 <th scope="col" colspan="2">Thời gian xóa</th>
             </tr>
         </thead>
@@ -41,9 +41,9 @@
                     <td>{{this.name}}</td>
                     <td>{{this.level}}</td>
                     <td>{{this.deletedAt}}</td>
-                    <td>    
-                    <a href="" class="btn btn-primary btn-restore mr-2" data-id="{{this._id}}">Khôi phục</a>
-                    <a href="" class="btn btn-primary" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-course-modal">Xóa vĩnh viễn</a>
+                    <td class="d-flex">    
+                      <a href="" class="btn btn-primary btn-restore mr-2" data-id="{{this._id}}">Khôi phục</a>
+                      <a href="" class="btn btn-primary" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-course-modal">Xóa vĩnh viễn</a>
                     </td>
                 </tr>
 
