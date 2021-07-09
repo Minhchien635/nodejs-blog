@@ -12,7 +12,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/courses/create">Create a course</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/me/stored/courses">My course/a>
+            <a class="dropdown-item" href="/me/stored/courses">My course</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" onclick="logout()" href="#">Logout</a>
           </div>
@@ -20,11 +20,11 @@
       </ul>
     </div>  
    
-    <div class="login">
-      <div class="text-center" id="login">
-        <a href="#myModal" class="btn btn-primary" data-toggle="modal">Login</a>
+    <div class="login" hidden = "true" id="login">
+      <div class="text-center">
+        <a href="#modalLogin" class="btn btn-primary" data-toggle="modal">Login</a>
       </div>
-      <div id="myModal" class="modal fade">
+      <div id="modalLogin" class="modal fade">
         <div class="modal-dialog modal-login">
           <div class="modal-content">
             
@@ -35,18 +35,63 @@
               <div class="modal-body">				
                 <div class="form-group">
                   <label>Username</label>
-                  <input type="text" id="username" class="form-control" required="required">
+                  <input type="text" id="usernameLogin" class="form-control" required="required">
                 </div>
                 <div class="form-group">
                   <div class="clearfix">
                     <label>Password</label>
                   </div>
                   
-                  <input type="password" id="password" class="form-control" required="required">
+                  <input type="password" id="passwordLogin" class="form-control" required="required">
                 </div>
               </div>
               <div class="modal-footer justify-content-center">
                 <button onclick="login()" class="btn btn-primary w-25">Login</button>
+              </div>
+            
+          </div>
+        </div>
+      </div>      
+    </div>
+
+    <div class="register ml-2" hidden = "true" id="register">
+      <div class="text-center">
+        <a href="#modalRegister" class="btn btn-primary" data-toggle="modal">Register</a>
+      </div>
+      <div id="modalRegister" class="modal fade">
+        <div class="modal-dialog modal-register">
+          <div class="modal-content">
+            
+              <div class="modal-header">				
+                <h4 class="modal-title">Register</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">				
+                <div class="form-group">
+                  <label>Username</label>
+                  <input type="text" id="usernameRegister" class="form-control" required="required">
+                </div>
+                <div class="form-group">
+                  <div class="clearfix">
+                    <label>Password</label>
+                  </div>
+                  <input type="password" id="passwordRegister" class="form-control" required="required">
+                </div>
+                <div class="form-group">
+                  <div class="clearfix">
+                    <label>Phone</label>
+                  </div>
+                  <input type="number" id="phone" class="form-control" required="required">
+                </div>
+                <div class="form-group">
+                  <div class="clearfix">
+                    <label>Address</label>
+                  </div>
+                  <input type="text" id="address" class="form-control" required="required">
+                </div>
+              </div>
+              <div class="modal-footer justify-content-center">
+                <button onclick="register()" class="btn btn-primary w-25">Register</button>
               </div>
             
           </div>
@@ -60,18 +105,18 @@
 <script>
 
   function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
+    let d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+ d.toUTCString();
+    let expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
 
   function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
     for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
+      let c = ca[i];
       while (c.charAt(0) == ' ') {
         c = c.substring(1);
       }
@@ -87,8 +132,33 @@
       url: 'account/login',
       type: 'POST',
       data: {
-        username: $('#username').val(),
-        password: $('#password').val(), 
+        username: $('#usernameLogin').val(),
+        password: $('#passwordLogin').val(), 
+      }
+    })
+    .then(data=>{
+      if(data.token && data.username){
+        setCookie('token', data.token, 1)
+        setCookie('username', data.username,1)
+        window.location.reload(true)
+      }else{
+        alert(data)
+      }
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+  }
+
+  function register(){
+    $.ajax({
+      url: 'account/register',
+      type: 'POST',
+      data: {
+        username: $('#usernameRegister').val(),
+        password: $('#passwordRegister').val(), 
+        phone: $('#phone').val(),
+        address: $('#address').val(),
       }
     })
     .then(data=>{
@@ -108,13 +178,14 @@
   function logout(){
     setCookie('token','', -1)
     setCookie('username','', -1)
-    window.location.replace("/");
+    window.location.replace("/")
   }
 
   if(getCookie('username') && getCookie('token')){
     $('#navbarDropdown').html(getCookie('username'))
-    $('#login').hide()
   }else{
     $('#navbarDropdown').hide()
+    $('#login').removeAttr('hidden')
+    $('#register').removeAttr('hidden')
   }
 </script>
