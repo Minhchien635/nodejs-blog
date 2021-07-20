@@ -1,8 +1,8 @@
 module.exports = {
-    mutipleMongooseToObject: async function(mongooses){
-        return await mongooses.map(mongoose => mongoose.toObject());
+    mutipleMongooseToObject: function(mongooses){
+        return mongooses.map(mongoose => mongoose.toObject());
     },
-    mongooseToObject: async function(mongoose){
-        return await mongoose ? mongoose.toObject() : mongoose;
+    mongooseToObject: function(mongoose){
+        return mongoose ? mongoose.toObject() : mongoose;
     }
 };
