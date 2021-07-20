@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
@@ -11,6 +12,7 @@ const route = require('./routes');
 const db = require('./config/db');
 
 //connect to DB
+
 db.connect();
 
 app.use(cookieParser());
