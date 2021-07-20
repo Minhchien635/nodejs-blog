@@ -3,7 +3,7 @@ const {mutipleMongooseToObject} = require('../../util/mongoose');
 
 class SiteController {
      // [GET] / 
-     index(req, res, next) {
+     async index(req, res, next) {
 
         //callback
       /*Course.find({},function(err, courses){
@@ -15,7 +15,7 @@ class SiteController {
       });*/
 
         //promise
-      Course.find({})
+      await Course.find({})
         .then(courses => {
             //courses = courses.map(course => course.toObject())
             res.render('home',{
