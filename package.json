@@ -41,6 +41,7 @@
     "mongoose": "^5.11.19",
     "mongoose-delete": "^0.5.3",
     "mongoose-slug-generator": "^1.0.4",
+    "node-modules": "^1.0.1",
     "typescript": "^4.3.5"
   },
   "devDependencies": {
