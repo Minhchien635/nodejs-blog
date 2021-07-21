@@ -1,29 +1,23 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="/">F8 education</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="profile">
-      <ul class="navbar-nav ml-auto">    
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/courses/create">Create a course</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/me/stored/courses">My course</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" onclick="logout()" href="#">Logout</a>
-          </div>
-        </li>
-      </ul>
-    </div>  
-   
-    <div class="login" hidden = "true" id="login">
-      <div class="text-center">
-        <a href="#modalLogin" class="btn btn-primary" data-toggle="modal">Login</a>
+  <div class="container d-flex">
+    <a class="navbar-brand mr-auto p-2" href="/">Blog</a>
+  
+    <div class="dropdown show" id="profile">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="/courses/create">Create a course</a>
+         <a class="dropdown-item" href="/me/stored/courses">My course</a>
+        <a class="dropdown-item" onclick="logout()" href="#">Logout</a>
       </div>
+    </div>
+   
+    <div>
+        <a href="#modalLogin" class="btn btn-primary login" hidden = "true" data-toggle="modal">Login</a>
+        <a href="#modalRegister" class="btn btn-primary register" hidden = "true" data-toggle="modal">Register</a>
+    </div>
+
+    <div class="login" id="login">
       <div id="modalLogin" class="modal fade">
         <div class="modal-dialog modal-login">
           <div class="modal-content">
@@ -54,10 +48,7 @@
       </div>      
     </div>
 
-    <div class="register ml-2" hidden = "true" id="register">
-      <div class="text-center">
-        <a href="#modalRegister" class="btn btn-primary" data-toggle="modal">Register</a>
-      </div>
+    <div class="register ml-1" id="register">
       <div id="modalRegister" class="modal fade">
         <div class="modal-dialog modal-register">
           <div class="modal-content">
@@ -185,7 +176,7 @@
     $('#navbarDropdown').html(getCookie('username'))
   }else{
     $('#navbarDropdown').hide()
-    $('#login').removeAttr('hidden')
-    $('#register').removeAttr('hidden')
+    $('.login').removeAttr('hidden')
+    $('.register').removeAttr('hidden')
   }
 </script>
