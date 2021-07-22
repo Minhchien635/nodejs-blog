@@ -1,14 +1,14 @@
-const Course = require('../models/Course');
 const { mongooseToObject, mutipleMongooseToObject } = require('../../util/mongoose');
+const Post = require('../models/Post');
 
 class MeController {
     // [GET] /me/stored/courses
-    storesCourses(req, res, next) {
-        Promise.all([Course.find({}), Course.countDocumentsDeleted()])
-            .then(([courses, deletedCount]) => 
-                res.render('me/stored-courses',{
+    storesPosts(req, res, next) {
+        Promise.all([Post.find({}), Post.countDocumentsDeleted()])
+            .then(([posts, deletedCount]) => 
+                res.render('me/stored-posts',{
                     deletedCount,
-                    courses: mutipleMongooseToObject(courses),
+                    posts: mutipleMongooseToObject(posts),
                 })
             )
             .catch(next);
@@ -30,10 +30,10 @@ class MeController {
     }
 
     // [GET] /me/trash/courses
-    trashCourses(req,res,next){
-        Course.findDeleted({})
-            .then(courses => res.render('me/trash-courses',{
-                courses: mutipleMongooseToObject(courses)
+    trashPosts(req,res,next){
+        Post.findDeleted({})
+            .then(posts => res.render('me/trash-posts',{
+                posts: mutipleMongooseToObject(posts)
             }))
             .catch(next);
     }

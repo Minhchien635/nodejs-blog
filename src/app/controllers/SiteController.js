@@ -1,4 +1,4 @@
-const Course = require('../models/Course');
+const Post = require('../models/Post');
 const {mutipleMongooseToObject} = require('../../util/mongoose');
 
 class SiteController {
@@ -15,12 +15,12 @@ class SiteController {
       });*/
 
         //promise
-      await Course.find({})
-        .then(courses => {
+      await Post.find({})
+        .then(posts => {
             //courses = courses.map(course => course.toObject())
             res.render('home',{
             //courses: courses
-              courses: mutipleMongooseToObject(courses)
+              posts: mutipleMongooseToObject(posts)
             });
          })
         //.then(courses => res.json(courses))

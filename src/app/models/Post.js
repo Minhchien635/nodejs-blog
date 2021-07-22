@@ -3,14 +3,14 @@ const Schema = mongoose.Schema;
 const slug = require('mongoose-slug-generator');
 const mongooseDelete = require('mongoose-delete');
 
-const Course = new Schema({
+const Post = new Schema({
     name: { type: String, require: true, },
     description: { type: String},
     image: { type: String},
     videoId: { type: String, require: true, },
     level: { type: String},
-   //createdAt: { type: Date, default: Date.now},
-    //updatedAt: { type: Date, default: Date.now},
+    createdAt: { type: Date, default: Date.now},
+    updatedAt: { type: Date, default: Date.now},
     slug: { type: String, slug: 'name', unique: true},
 },{
     timestamps: true
@@ -18,9 +18,9 @@ const Course = new Schema({
 
 //Add plugins
 mongoose.plugin(slug);
-Course.plugin(mongooseDelete, {
+Post.plugin(mongooseDelete, {
     deletedAt : true,
     overrideMethods: 'all',
 });
 
-module.exports = mongoose.model('Course', Course);
+module.exports = mongoose.model('Post', Post);
