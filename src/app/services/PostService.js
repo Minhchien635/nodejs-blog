@@ -1,4 +1,5 @@
 const Post = require('../models/Post');
+const Account = require('../models/Account');
 const { mongooseToObject } = require('../../util/mongoose');
 const verifyAccount = require('../security/VerifyAccount');
 
@@ -7,9 +8,11 @@ class PostService {
     // [GET] /courses/:slug
     async show(req, res, next) {
         await Post.findOne({_id: req.params.id})   
-            .then(post => {
+            .then(async (post) => {
+                 const username = (await Account.findOne({_id: post.user_id})).username;
                  res.render('posts/show',{
-                   post: mongooseToObject(post)  
+                   post: mongooseToObject(post),
+                   username,
                 });
             })
             .catch(next)

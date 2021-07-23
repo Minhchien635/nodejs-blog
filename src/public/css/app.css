@@ -28,7 +28,7 @@ footer{
     border-radius: .5rem;
 }
 
-a.btn-primary:hover, a.btn-primary{
+a.btnh:hover, a.btnh{
     background-color: rgb(255 212 0 / 96%);
     color: #21252991;
     border-color: #dccf35b5;

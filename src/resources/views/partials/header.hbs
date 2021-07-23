@@ -8,14 +8,14 @@
 
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         <a class="dropdown-item" href="/posts/create">Create a post</a>
-         <a class="dropdown-item" href="/me/stored/posts">My post</a>
+         <a class="dropdown-item" href="/me/stored/posts">My posts</a>
         <a class="dropdown-item" onclick="logout()" href="#">Logout</a>
       </div>
     </div>
    
     <div>
-        <a href="#modalLogin" class="btn btn-primary login" hidden = "true" data-toggle="modal">Login</a>
-        <a href="#modalRegister" class="btn btn-primary register" hidden = "true" data-toggle="modal">Register</a>
+        <a href="#modalLogin" class="btn btnh btn-primary login" hidden = "true" data-toggle="modal">Login</a>
+        <a href="#modalRegister" class="btn btnh btn-primary register" hidden = "true" data-toggle="modal">Register</a>
     </div>
 
     <div class="login" id="login">
@@ -122,7 +122,7 @@
 
   function login(){
     $.ajax({
-      url: 'account/login',
+      url: '/account/login',
       type: 'POST',
       data: {
         username: $('#usernameLogin').val(),
@@ -145,7 +145,7 @@
 
   function register(){
     $.ajax({
-      url: 'account/register',
+      url: '/account/register',
       type: 'POST',
       data: {
         username: $('#usernameRegister').val(),

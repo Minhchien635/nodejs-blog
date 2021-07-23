@@ -1,21 +1,21 @@
 <form class="mt-4" name="container-form" method="POST" action="/posts/handle-form-actions">
     <div>
-        <h3>Khóa học của tôi</h3>
-        <a href="/me/trash/posts">Thùng rác ({{deletedCount}})</a> 
+        <h3>My posts</h3>
+        <a href="/me/trash/posts">Trash ({{deletedCount}})</a> 
 
         <div class="mt-4 d-flex align-items-center">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
             <label class="form-check-label" for="checkbox-all">
-              Chọn tất cả
+              Check all
             </label>
           </div>
           <select class="m-2 form-control form-control-sm checkbox-select-all-options" name="action" required>
-            <option value="">-- Hành động --</option>
-            <option value="delete">Xóa</option>
+            <option value="">-- Actions --</option>
+            <option value="delete">Delete</option>
           </select>
 
-          <button class="btn btn-primary btn-sm check-all-submit-btn" disabled>Thực hiện</button>
+          <button class="btn btn-primary btn-sm check-all-submit-btn" disabled>Action</button>
         </div>
     </div>
 
@@ -38,7 +38,7 @@
                     </td>
                     <th scope="row">{{sum @index 1}}</th>
                     <td>{{this.title}}</td>
-                    <td>{{{this.content}}}</td>
+                    <td class="" style="white-space: nowrap;">{{{this.content}}}</td>
                     <td>{{this.createdAt}}</td>
                     <td class="d-flex">    
                       <a href="/posts/{{this._id}}/edit" class="btn btn-primary mr-2">Sửa</a>
