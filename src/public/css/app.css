@@ -1,3 +1,67 @@
+header{
+    background-color: #43caf3;
+}
+
+footer{
+    background-color: black;
+    color:aliceblue;
+}
+
+.navbar-brand {
+    font-size: 1.75rem;
+    line-height: normal;
+    color: #212529;
+}
+
+#navbarDropdown{
+    border-color: #dccf35b5;
+    color:aliceblue;
+    background-color: #ff0000;
+    font-size: 1.1rem;
+    border-radius: .5rem;
+}
+
+#navbarDropdown:hover{
+    background-color: rgb(255 212 0 / 96%);
+    color: #21252991;
+    border-color: #dccf35b5;
+    border-radius: .5rem;
+}
+
+a.btn-primary:hover, a.btn-primary{
+    background-color: rgb(255 212 0 / 96%);
+    color: #21252991;
+    border-color: #dccf35b5;
+    border-radius: .5rem;
+}
+
+a.login, a.register{
+    background-color:#ff0000;
+    border-color: #dccf35b5;
+    color: #21252991;
+}
+
 .checkbox-select-all-options{
     width: 140px;
+}
+
+.cardb {
+    height: 80px;
+}
+
+.cardh{
+    white-space: nowrap; 
+    overflow: hidden;
+    background-color: rgb(0 245 166 / 59%);
+    color: black
+}
+
+.cardb { 
+    white-space: nowrap; 
+    overflow: hidden; 
+    color:black
+}
+
+a.decoration {
+    text-decoration: none;
 }

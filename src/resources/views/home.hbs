@@ -2,13 +2,15 @@
     <div class="row">
         {{#each posts}}
             <div class="col-sm-6 col-lg-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <a href="/posts/{{this._id}}">
+                <div class="card mb-4 border-primary">
+                    <a class="decoration" href="/posts/{{this._id}}" >                  
+                        <div class="card-header cardh">
                             <h5 class="card-title">{{this.title}}</h5>     
-                        </a>   
-                        {{{this.content}}}  
-                    </div>
+                        </div>
+                        <div class="card-body cardb"> 
+                            {{{this.content}}}  
+                        </div>
+                    </a>  
                 </div>
             </div>
         {{/each}}
