@@ -19,13 +19,13 @@
         </div>
     </div>
 
-    <table class="table mt-4">
+    <table class="table mt-4 container">
         <thead>
             <tr>
-                <th scope="col" colspan="2">#</th>
-                <th scope="col">Tên khóa học</th>
-                <th scope="col">Trình độ</th>
-                <th scope="col" colspan="2">Thời gian tạo</th>
+                <th scope="col-sm" colspan="2">#</th>
+                <th scope="col-sm">Post title</th>
+                <th scope="col-sm">Content</th>
+                <th scope="col-sm" colspan="2">Created at</th>
             </tr>
         </thead>
         <tbody>
@@ -37,12 +37,12 @@
                       </div>
                     </td>
                     <th scope="row">{{sum @index 1}}</th>
-                    <td>{{this.name}}</td>
-                    <td>{{this.level}}</td>
+                    <td>{{this.title}}</td>
+                    <td>{{{this.content}}}</td>
                     <td>{{this.createdAt}}</td>
-                    <td>    
-                    <a href="/posts/{{this._id}}/edit" class="btn btn-primary mr-2">Sửa</a>
-                    <a href="" class="btn btn-primary" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-post-modal">Xóa</a>
+                    <td class="d-flex">    
+                      <a href="/posts/{{this._id}}/edit" class="btn btn-primary mr-2">Sửa</a>
+                      <a href="" class="btn btn-primary" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-post-modal">Xóa</a>
                     </td>
                 </tr>
 

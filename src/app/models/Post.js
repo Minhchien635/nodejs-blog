@@ -4,14 +4,12 @@ const slug = require('mongoose-slug-generator');
 const mongooseDelete = require('mongoose-delete');
 
 const Post = new Schema({
-    name: { type: String, require: true, },
-    description: { type: String},
-    image: { type: String},
-    videoId: { type: String, require: true, },
-    level: { type: String},
+    title: { type: String, require: true, },
+    content: { type: String},
+    user_id: { type: String, require: true,},
     createdAt: { type: Date, default: Date.now},
     updatedAt: { type: Date, default: Date.now},
-    slug: { type: String, slug: 'name', unique: true},
+    slug: { type: String, slug: 'title', unique: true},
 },{
     timestamps: true
 });

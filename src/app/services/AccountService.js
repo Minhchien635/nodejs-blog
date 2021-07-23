@@ -63,13 +63,7 @@ class AccountService{
     }
 
     async private(req, res, next){
-      
-        if(verifyAccount.verify(req)){
-            console.log('true')
-        }else{
-            console.log('false')
-
-        }
+        console.log((await verifyAccount.verify(req)).user.username)
     }
 
 }

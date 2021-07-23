@@ -2,14 +2,15 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
-const methodOverride = require('method-override')
+const methodOverride = require('method-override');
 const handlebars = require('express-handlebars');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
 const app = express();
 //const port = 3000;
 
 const route = require('./routes');
 const db = require('./config/db');
+
 
 //connect to DB
 
@@ -43,6 +44,7 @@ app.engine(
         }
     }),
 );
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources','views'));
 

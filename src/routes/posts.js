@@ -13,6 +13,6 @@ router.put('/:id', postController.update);
 router.patch('/:id/restore', postController.restore);
 router.delete('/:id', postController.delete);
 router.delete('/:id/force', postController.forceDelete);
-router.get('/:slug', postController.show);
+router.get('/:id', postController.show);
 
 module.exports = router;

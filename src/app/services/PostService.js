@@ -1,13 +1,16 @@
 const Post = require('../models/Post');
 const { mongooseToObject } = require('../../util/mongoose');
+const verifyAccount = require('../security/VerifyAccount');
 
 class PostService {
     // [GET] /courses/:slug
     // [GET] /courses/:slug
-    show(req, res, next) {
-        Post.findOne({slug: req.params.slug})   
+    async show(req, res, next) {
+        await Post.findOne({_id: req.params.id})   
             .then(post => {
-                 res.render('posts/show',{post: mongooseToObject(post)});
+                 res.render('posts/show',{
+                   post: mongooseToObject(post)  
+                });
             })
             .catch(next)
         //res.send('course detail' + req.params.slug);
@@ -19,15 +22,20 @@ class PostService {
     }
 
      // [POST] /courses/store
-    store(req, res, next) {
-      // res.json(req.body);
-      req.body.image = 'https://img.youtube.com/vi/'+ req.body.videoId + '/sddefault.jpg';
-      const post = new Post(req.body);
+    async store(req, res, next) {
+      const verify = await verifyAccount(req)
+
+      const post = new Post({
+        title: req.body.title,
+        content: req.body.content,
+        user_id: verify.user._id,
+      });
+
       console.log(post);
       post.save()
         .then(() => res.redirect('/me/stored/posts'))
         .catch(error => {
-
+            console.log(error)
         } );
      }
 
