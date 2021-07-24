@@ -41,16 +41,16 @@
                     <td class="" style="white-space: nowrap;">{{{this.content}}}</td>
                     <td>{{this.createdAt}}</td>
                     <td class="d-flex">    
-                      <a href="/posts/{{this._id}}/edit" class="btn btn-primary mr-2">Sửa</a>
-                      <a href="" class="btn btn-primary" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-post-modal">Xóa</a>
+                      <a href="/posts/{{this._id}}/edit" class="btn btn-primary mr-2">Edit</a>
+                      <a href="" class="btn btn-primary" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-post-modal">Delete</a>
                     </td>
                 </tr>
 
             {{else}}
                 <tr>
                     <td colspan="5" class="text-center">
-                        Bạn chưa đăng khóa học nào.
-                        <a href="/posts/create">Đăng khóa học</a>
+                        You have no posts yet.
+                        <a href="/posts/create">Create post</a>
                     </td>
                 </tr>
 
