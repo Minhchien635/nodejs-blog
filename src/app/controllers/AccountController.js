@@ -1,9 +1,3 @@
-const Account = require('../models/Account');
-const { mongooseToObject } = require('../../util/mongoose');
-const jwt = require('jsonwebtoken');
-const express = require('express');
-const bcrypt = require('bcrypt');
-const verifyAccount = require('../security/VerifyAccount');
 const accountService = require('../services/AccountService')
 
 class AccountController{

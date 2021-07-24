@@ -1,7 +1,7 @@
 const Post = require('../models/Post');
 const Account = require('../models/Account');
 const { mongooseToObject } = require('../../util/mongoose');
-const verifyAccount = require('../security/VerifyAccount');
+const authentication = require('../security/Authentication');
 
 class PostService {
     // [GET] /courses/:slug
@@ -26,12 +26,12 @@ class PostService {
 
      // [POST] /courses/store
     async store(req, res, next) {
-      const verify = await verifyAccount(req)
+      const user = await authentication.verify(req, res, next)
 
       const post = new Post({
         title: req.body.title,
         content: req.body.content,
-        user_id: verify.user._id,
+        user_id: user._id,
       });
 
       console.log(post);

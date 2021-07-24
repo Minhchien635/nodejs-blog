@@ -3,7 +3,7 @@ const { mongooseToObject } = require('../../util/mongoose');
 const jwt = require('jsonwebtoken');
 const express = require('express');
 const bcrypt = require('bcrypt');
-const verifyAccount = require('../security/VerifyAccount');
+const authentication = require('../security/Authentication');
 
 class AccountService{
     async register(req, res, next){
@@ -22,14 +22,7 @@ class AccountService{
                 address: req.body.address,
             })
             .then(data=>{
-                var token = jwt.sign({
-                    _id: data._id
-                }, 'mk')
-                return res.json({
-                    message: 'Success',
-                    username: data.username,
-                    token: token,
-                })
+                return res.json(authentication.getToken(data));
             })
             .catch(err=>{
                 return res.json(err);
@@ -38,32 +31,24 @@ class AccountService{
     }
 
     async login(req, res, next){
-        var username = req.body.username;
-        var password = req.body.password;
+        let password = req.body.password;
 
         Account.findOne({username: req.body.username})
         .then(data => {
             if(data){
                 if(bcrypt.compareSync(String(password), String(data.password))){
-                    var token = jwt.sign({
-                        _id: data._id
-                    }, 'mk')
-                    return res.json({
-                        message: 'Success',
-                        username: data.username,
-                        token: token,
-                    })
+                    return res.json(authentication.getToken(data))
                 }else{
-                    return res.json('Login failed!')
+                    return res.json('Password incorrect')
                 }
             }else{
-                return res.json('Login failed!')
+                return res.json('User not exist')
             }
         })
     }
 
     async private(req, res, next){
-        console.log((await verifyAccount.verify(req)).user.username)
+        console.log((await authentication.verify(req,res, next)).username)
     }
 
 }

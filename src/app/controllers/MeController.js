@@ -1,17 +1,21 @@
 const { mongooseToObject, mutipleMongooseToObject } = require('../../util/mongoose');
 const Post = require('../models/Post');
+const authentication = require('../security/Authentication')
 
 class MeController {
     // [GET] /me/stored/courses
-    storesPosts(req, res, next) {
-        Promise.all([Post.find({}), Post.countDocumentsDeleted()])
-            .then(([posts, deletedCount]) => 
-                res.render('me/stored-posts',{
-                    deletedCount,
-                    posts: mutipleMongooseToObject(posts),
-                })
-            )
-            .catch(next);
+    async storesPosts(req, res, next) {
+        const user = await authentication.verify(req, res, next);
+        if(user){
+            Promise.all([Post.find({user_id: user._id}), Post.countDocumentsDeleted()])
+                .then(([posts, deletedCount]) => 
+                    res.render('me/stored-posts',{
+                        deletedCount,
+                        posts: mutipleMongooseToObject(posts),
+                    })
+                )
+                .catch(next);
+        }
             
          /*   
         Courses.countDocumentsDeleted()
