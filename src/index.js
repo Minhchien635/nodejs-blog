@@ -6,15 +6,18 @@ const methodOverride = require('method-override');
 const handlebars = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const app = express();
+const bodyParser = require('body-parser');
 //const port = 3000;
 
 const route = require('./routes');
 const db = require('./config/db');
 
-
 //connect to DB
 
 db.connect();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(cookieParser());
 
