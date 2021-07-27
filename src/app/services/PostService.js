@@ -80,10 +80,11 @@ class PostService {
       }
 
       // [POST] /handle-form-actions
-      handleFormActions(req, res, next){
+      async handleFormActions(req, res, next){
+        console.log(req.body)
           switch(req.body.action){
             case 'delete':
-              Post.delete({ _id: {$in: req.body.postIds} })
+              await Post.delete({ _id: {$in: req.body.postIds} })
                 .then(() => res.redirect('back'))
                 .catch(next);
               break;
@@ -94,10 +95,10 @@ class PostService {
       }
 
       // [POST] /trash-handle-form-actions
-      trashHandleFormActions(req, res, next){
+      async trashHandleFormActions(req, res, next){
         switch(req.body.action){
           case 'restore':
-            Post.restore({ _id: {$in: req.body.postIds}})
+            await Post.restore({ _id: {$in: req.body.postIds}})
               .then(() => res.redirect('back'))
               .catch(next);
             break;
