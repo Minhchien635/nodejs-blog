@@ -4,7 +4,17 @@ const path = require('path');
 
 class ImageService{
 
-    async getPhotos(req, res, next) {
+    //getImage(http://localhost:3000/images/60fc33a03c12863d89462178)
+    async getImage(req, res, next) {
+        await image.findById(req.params.id)
+            .then(image => {
+                res.contentType(image.img.contentType);
+                res.send(image.img.data);     
+            })
+    }
+
+    //getImage(base64)
+    async getImages(req, res, next) {
         await image.find({})
             .then(images => {
                 let photos = []
@@ -16,22 +26,23 @@ class ImageService{
                         data: (image.img.data).toString('base64'),
                     })
                 })
-                return res.render('photo',{
+                return res.render('photos',{
                     photos
                 })
+            })
+            .catch(err=>{
+                return res.json(err);
             })
     }
 
     async getPageUploadImage(req, res, next) {
-        image.find({}, (err, items) => {
-            if (err) {
-                console.log(err);
-                res.status(500).send('An error occurred', err);
-            }
-            else {
-                res.render('imagesPage', { items: items });
-            }
-        });
+        await image.find({})
+            .then(image => {
+                res.render('imagesPage', {image});
+            })
+            .catch(err => {
+                return res.json(err);
+            })
     }
 
     async createImage(req, res, next) {

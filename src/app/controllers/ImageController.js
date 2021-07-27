@@ -10,8 +10,12 @@ class ImageController{
         return imageService.createImage(req, res, next);
     }
 
+    getImage(req, res, next){
+        return imageService.getImage(req, res, next);
+    }
+
     getPhotos(req, res, next){
-        return imageService.getPhotos(req, res, next);
+        return imageService.getImages(req, res, next);
     }
 
 }

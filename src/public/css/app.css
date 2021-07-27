@@ -65,3 +65,19 @@ a.login, a.register{
 a.decoration {
     text-decoration: none;
 }
+
+.table-responsive{
+    display: block;
+    position: relative;
+    height: 500px;
+    overflow: auto;
+}
+
+thead{
+    position: sticky;
+    top: -1px;
+    background-color: #dee2e6;
+    z-index: 1;
+}
+
+

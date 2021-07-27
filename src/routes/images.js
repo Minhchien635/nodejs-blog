@@ -17,6 +17,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 router.get('/photos', imageController.getPhotos);
+router.get('/:id', imageController.getImage);
 router.get('/', imageController.getPageUploadImage);
 router.post('/', upload.single('image'), imageController.createImage);
 

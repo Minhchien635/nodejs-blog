@@ -20,7 +20,8 @@
          
     </div>
 
-    <table class="table mt-4 container">
+<div class="table-responsive">
+    <table class="table">
         <thead>
             <tr>
                 <th scope="col-sm" colspan="2">#</th>
@@ -43,7 +44,7 @@
                     <td>{{this.deletedAt}}</td>
                     <td class="d-flex">    
                       <a href="" class="btn btn-primary btn-restore mr-2" data-id="{{this._id}}">Restore</a>
-                      <a href="" class="btn btn-primary" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-post-modal">Force delete</a>
+                      <a href="" class="btn btn-danger" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-post-modal">Force delete</a>
                     </td>
                 </tr>
 
@@ -58,6 +59,7 @@
             {{/each}}
         </tbody>
     </table>
+    </div>
 </form>
 
 

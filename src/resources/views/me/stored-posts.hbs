@@ -19,7 +19,8 @@
         </div>
     </div>
 
-    <table class="table mt-4 container">
+<div class="table-responsive">
+    <table class="table">
         <thead>
             <tr>
                 <th scope="col-sm" colspan="2">#</th>
@@ -30,7 +31,7 @@
         </thead>
         <tbody>
             {{#each posts}}
-                <tr>
+                <tr>    
                     <td>
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="postIds[]" value="{{this._id}}">
@@ -42,7 +43,7 @@
                     <td>{{this.createdAt}}</td>
                     <td class="d-flex">    
                       <a href="/posts/{{this._id}}/edit" class="btn btn-primary mr-2">Edit</a>
-                      <a href="" class="btn btn-primary" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-post-modal">Delete</a>
+                      <a href="" class="btn btn-danger" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-post-modal">Delete</a>
                     </td>
                 </tr>
 
@@ -57,6 +58,7 @@
             {{/each}}
         </tbody>
     </table>
+    </div>
 </form>
 
 
