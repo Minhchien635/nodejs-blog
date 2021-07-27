@@ -81,7 +81,6 @@ class PostService {
 
       // [POST] /handle-form-actions
       async handleFormActions(req, res, next){
-        console.log(req.body)
           switch(req.body.action){
             case 'delete':
               await Post.delete({ _id: {$in: req.body.postIds} })
