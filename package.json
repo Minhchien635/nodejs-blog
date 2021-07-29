@@ -1,7 +1,7 @@
 {
   "name": "blog",
   "version": "1.0.0",
-  "description": "",
+  "description": "Dockerized node.js app",
   "main": "src/index.js",
   "scripts": {
     "beautiful": "lint-staged",
