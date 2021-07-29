@@ -32,7 +32,7 @@ jobs:
           file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: truongnh1992/demo-github-actions:latest
+          tags: Minhchien635/nodejs_blog:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
