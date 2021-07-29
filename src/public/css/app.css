@@ -68,7 +68,8 @@ a.login, a.register{
     height: 80px;   
     color:black;
     overflow: hidden;
-    padding: .55rem .55rem;
+    margin-bottom: .3rem;
+    padding: .55rem .5rem;
 }
 
 a.decoration {
