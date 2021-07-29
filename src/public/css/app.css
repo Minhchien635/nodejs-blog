@@ -45,21 +45,30 @@ a.login, a.register{
     width: 140px;
 }
 
-.cardb {
-    height: 80px;
+.cardh { 
+    background-color: rgb(0 245 166 / 59%);
+    color: black;
+    padding: .55rem .55rem;
 }
 
-.cardh{
+.card {
+    box-sizing: content-box;
     white-space: nowrap; 
+}
+
+.card-title{
     overflow: hidden;
-    background-color: rgb(0 245 166 / 59%);
-    color: black
+}
+
+.card-content{
+    overflow: hidden;
 }
 
 .cardb { 
-    white-space: nowrap; 
-    overflow: hidden; 
-    color:black
+    height: 80px;   
+    color:black;
+    overflow: hidden;
+    padding: .55rem .55rem;
 }
 
 a.decoration {
@@ -80,4 +89,8 @@ thead{
     z-index: 1;
 }
 
-
+.title-row-table{
+    position: sticky;
+    left: 0;
+    background-color: #dee2e6;
+}
