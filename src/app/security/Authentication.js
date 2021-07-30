@@ -12,7 +12,7 @@ class Authentication{
             if(user){
                 return user
             }else{
-                return res.json('Access is not allowed')
+                return res.redirect('/')
             }
         } catch (error) {
             return res.json(error)
