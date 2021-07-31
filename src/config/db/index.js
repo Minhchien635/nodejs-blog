@@ -4,8 +4,8 @@ async function connect(){
 try {
     //await mongoose.connect('mongodb://localhost:27017/f8_education_dev', {
         DATABASE_URL='mongodb://mongo/f8_education_dev'
-        console.log(DATABASE_URL)
-        await mongoose.connect(DATABASE_URL, {
+        console.log(DATABASE_URL + ' || ' + process.env.DATABASE_URL)
+        await mongoose.connect(process.env.DATABASE_URL||DATABASE_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false,
