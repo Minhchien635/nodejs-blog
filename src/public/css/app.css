@@ -95,3 +95,9 @@ thead{
     left: 0;
     background-color: #dee2e6;
 }
+
+.background-title-row-table{
+    position: sticky;
+    left: 0;
+    background-color: #ffffff;
+}

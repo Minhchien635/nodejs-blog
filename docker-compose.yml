@@ -13,6 +13,7 @@ services:
       - mongo
 
   mongo:
+    restart: always
     image: minhchien635/mongo_nodejsblog:lasted
     ports:
       - 27018:27017
